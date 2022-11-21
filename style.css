@@ -1,12 +1,28 @@
 html, body {
   height: 100%;
   width: 100%;
+  background-image: url('https://www.pennington.com/-/media/Project/OneWeb/Pennington/Images/blog/seed/10-Surprising-Facts-About-Grass/grass_10surprising_header.jpg?h=480&iar=0&w=1140&hash=52D3C55DD9AEDEC3AE5D90AC0599EF8D');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-.Header_div{
-  size: 60px;
+.header{
+  padding: 5px;
+  background: black;
+  width: 69.5%;
+  margin: auto;
 }
 
 .Header_text{
   color: red;
+  text-align: center;
+  font-size: 100px;
+}
+
+.Main_text{
+  background: grey;
+  height: 100%;
+  width: 70%;
+  margin: auto;
 }
