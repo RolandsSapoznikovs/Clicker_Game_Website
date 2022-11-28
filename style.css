@@ -66,3 +66,24 @@ html, body {
     border: 10px solid;
   border-color: white;
 }
+
+.RegisterButton{
+  width: 16%;
+  background: black;
+  text-align: center;
+  color: white;
+}
+
+.Register
+{
+  background: white;
+  width: 30%;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.RegisterSubmit
+{
+  margin-top: 20px;
+}
