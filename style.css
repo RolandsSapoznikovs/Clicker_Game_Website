@@ -9,20 +9,60 @@ html, body {
 
 .header{
   padding: 5px;
-  background: black;
+  background: red;
   width: 69.5%;
   margin: auto;
 }
 
 .Header_text{
-  color: red;
+  color: black;
   text-align: center;
   font-size: 100px;
 }
 
 .Main_text{
-  background: grey;
+  background:#F5EBE0;
   height: 100%;
   width: 70%;
   margin: auto;
+}
+
+.UpdatesButton{
+  background-color: #555;
+  color: white;
+  float: left;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 23.33%;
+  margin-left: 15%;
+  border: 10px solid;
+  border-color: white;
+}
+
+.AboutButton{
+  background-color: #555;
+  color: white;
+  float: left;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 23.33%;
+  border: 10px solid;
+  border-color: white;
+}
+
+.ReviewButton{
+  background-color: #555;
+  color: white;
+  float: left;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 23.33%;
+    border: 10px solid;
+  border-color: white;
 }
