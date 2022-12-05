@@ -7,10 +7,11 @@ const http = require('http');
 const hostname = '0.0.0.0';
 const port = 3000;
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(function(req, res) {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     res.end('Hello World');
+    res.write('Hello');
 })
 
 const db = mysql.createConnection({
@@ -40,12 +41,9 @@ db.connect((err) => {
 
 const app = express();
 
-app.get('/', function(req, res) {
-    res.sendFile(process.cwd() + '/views/index.html');
-});
 
-app.listen(3000, () => {
-
-    console.log("Visit http://127.0.0.1:3000/index.html");
+app.listen(port, () => {
+        console.log("Visit http://127.0.0.1:3000/index.html")
+        
   
   });
