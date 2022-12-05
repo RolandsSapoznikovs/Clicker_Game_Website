@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Inter', sans-serif;
+}
+html {
+    background-color: rgb(189, 248, 179);
+}
+a {
+	text-decoration: none;
+}
+ul li a {
+   color: rgb(255, 255, 255);
+   font-size: 48px;
+   font-weight: 800;
+   text-shadow: 3px 3px 4px rgb(0, 0, 0);
+}
+ul li a:hover { /*navodka*/
+    color: rgb(233, 177, 79);
+    font-size: 48px;
+    font-weight: 800;
+    text-shadow: 6px 6px 4px rgb(0, 0, 0);
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+nav ul li {
+    display:inline-block;
+    padding: 16.5px 26px;
+}
+header {
+    background-color: rgb(101, 142, 75);
+    width: 100%;
+    height: 100px;
+    position: fixed;
+}
+#mainmain {
+    background-color: rgb(189, 248, 179);
+    width: 100%;
+    height: 2022px;
+}
+.logobobo {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#fruitclickername {
+    padding-left: 50px;
+}
+#banana {
+    padding-left: 10px;
+    padding-top: 70px;
+}
+#pear {
+    padding: 222px 35px 40px 55px; /*top-right-bottom-left*/
+}
+.ptext p{
+    color: rgb(98, 128, 84);
+    font-size: 36px;
+    text-align: center;
+    font-weight: 800;
+    padding-bottom: 75px;
+}
+.fatab p{
+    color: rgb(79, 79, 79);
+    font-size: 48px;
+    font-weight: 800;
+    text-align: center;
+}
+.fatab {
+    padding-top: 35px;
+}
+.applesection {
+    width: 50%;
+    height: 474px;
+    border: 1px solid;
+    border-width: 3px;
+    float: left;
+    display: block;
+}
+.moneysection {
+    width: 49.37%;
+    height: 474px;
+    border: 1px solid;
+    border-width: 3px;
+    float: left;
+    display: block;
+    margin-bottom: 30px;
+}
+#upgrade {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#apple{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#money{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+footer {
+    background-color: rgb(101, 142, 75);
+    width: 100%;
+    height: 59px;
+}
+footer a{
+    padding-left: 44%; 
+    font-size: 40px;
+    font-weight: 800;
+    color: rgb(209,245,196);
+}
+
+/*LOGIN*/
+
+#login {    
+    background-color: rgb(189, 248, 179);
+    width: 100%;
+    height: 1030px;
+}
+.domwal {
+    width: 47.55%;
+    height: 100%;
+    display:block;
+    margin: 0 auto;
+    background-color: rgb(229,255,228)
+}
+.loginbox h2{
+    color:rgba(98, 128, 84, 0.75);
+    display: block;
+    padding-top: 182px;
+    font-size: 82px;
+    text-align: center;
+    font-weight: 800;
+    text-shadow: 3px 3px 4px rgb(100, 100, 100);
+}
+.loginbox form{
+    display: block;
+    text-align: center;
+}
+.loginbox p{
+    padding: 10% 40% 0px 0px; /*top-right-bottom-left*/
+    color:rgba(98, 128, 84, 0.75);
+    font-size: 40px;
+    font-weight: 800;
+}
+.loginbox input{
+    font-size:40px;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.75);
+    border-style: groove;
+}
+.loginbox button {
+    margin-top: 75px;
+    font-size:35px;
+}
+#logbut {
+    color:rgba(98, 128, 84, 0.85);
+    background-color: rgb(170, 233, 180);
+    border: 2px solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: rgba(5, 27, 2, 0.85);
+    border-style: groove;
+    padding: 20px 33px 20px 33px; /*top-right-bottom-left*/     
+}
+#logbut:hover {
+    color:rgba(98, 128, 84);
+    background-color: rgb(140, 236, 156);
+    border: 2px solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: rgba(5, 27, 2, 0.85);
+    border-style: groove;
+    padding: 20px 33px 20px 33px; /*top-right-bottom-left*/     
+}
+#regbutfa {
+    color:rgba(117, 142, 106, 0.85);
+    background-color: rgb(192, 227, 198);
+    border: 2px solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: rgba(26, 69, 18, 0.85);
+    border-style: groove;
+    padding: 20px 20px 20px 20px;
+}
+#regbutfa:hover {
+    color:rgba(117, 142, 106);
+    background-color: rgb(147, 238, 162);
+    border: 2px solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: rgba(26, 69, 18, 0.85);
+    border-style: groove;
+    padding: 20px 20px 20px 20px;
+}
+.loginbox p span{
+    padding: 2.5% 0% 0% 0%; /*top-right-bottom-left*/
+    color:rgba(98, 128, 84, 0.75);
+    font-size: 20px;
+    font-weight: 700;
+    float: right;
+}
+#passwordid{
+    padding: 10% 23% 0% 0%; /*top-right-bottom-left*/
+}
+
+/* SIGN IN exclusive */
+
+#signin {    
+    background-color: rgb(189, 248, 179);
+    width: 100%;
+    height: 1180px;
+}
+.modwal {
+    width: 47.55%;
+    height: 100%;
+    display:block;
+    margin: 0 auto;
+    background-color: rgb(229,255,228)
+}
+#regbut {
+    color:rgba(98, 128, 84, 0.85);
+    background-color: rgb(170, 233, 180);
+    border: 2px solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: rgba(5, 27, 2, 0.85);
+    border-style: groove;
+    padding: 20px 20px 20px 20px;
+}
+#regbut:hover {
+    color:rgba(98, 128, 84);
+    background-color: rgb(140, 236, 156);
+    border: 2px solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: rgba(5, 27, 2, 0.85);
+    border-style: groove;
+    padding: 20px 20px 20px 20px;
+}
+#ahaa {
+    padding: 9% 0% 0% 0%; /*top-right-bottom-left*/
+    color:rgba(98, 128, 84, 0.75);
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+}
+#ahaa a {
+    color:rgba(45, 126, 7, 0.75);
+}
+#ahaa a:hover{
+    color:rgba(45, 126, 7);
+    text-decoration: underline;
+}
+#mailid {
+    padding: 10% 50% 0% 0%; /*top-right-bottom-left*/
+}
+
+/* REVIEWS EXCLUSIVE */
+
+#reviews {    
+    background-color: rgb(189, 248, 179);
+    width: 100%;
+    height: 1080px;
+}
+#reviews h2{
+    color:rgba(98, 128, 84);
+    display: block;
+    padding-top: 140px;
+    padding-bottom: 50px;
+    font-size: 82px;
+    text-align: center;
+    font-weight: 800;
+    text-shadow: 3px 3px 4px rgb(0, 0, 0);
+}
+.waldom {
+    width: 76.11%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: rgb(152,210,142);
+}
+.waldom form {
+    display: block;
+    text-align: center;
+}
+.waldom form input{
+    margin-top: 3.91%;
+    font-size: 30px;
+    padding: 1% 35% 1% 15% ; /*top-right-bottom-left*/
+}
+.waldom button {
+    font-size: 25px;
+    padding: 1% 1% 1% 1% ;
+    background-color: rgb(91, 109, 85);
+    float: right;
+    display: block;
+    margin: 3.91% 5% 0% 0%;
+}
+.reviewp {
+    float: left;
+    padding: 4% 0% 0% 7.5% ; /*top-right-bottom-left*/
+    font-size: 30px;
+}
+.reviewp h3{
+    float: left;
+    color:rgb(59, 94, 43);
+    text-align: left;
+}
+.reviewp p{
+    float: left;
+    color:rgb(72, 88, 65);
+    text-align: left;
+}
+
+/* Update exclusive */
+
+#updates {    
+    background-color: rgb(189, 248, 179);
+    width: 100%;
+    height: 1030px;
+}
+.updatep {
+    padding: 35px 0% 0% 100px; /*top-right-bottom-left*/
+    font-size: 35px;
+}
+.updatep ul h3 {
+    color: rgb(83, 114, 68);
+    padding-bottom: 1%;
+}
+.updatep ul li {
+    color: rgb(98,128,84);
+    padding: 0px 0px 20px 100px;
+}
+#updates h2{
+    color:rgba(98, 128, 84);
+    display: block;
+    padding-top: 140px;
+    padding-bottom: 50px;
+    font-size: 82px;
+    text-align: center;
+    font-weight: 800;
+    text-shadow: 3px 3px 4px rgb(0, 0, 0);
+}
+.updfoot {
+    width: 100%;
+    height: 75px;
+}
