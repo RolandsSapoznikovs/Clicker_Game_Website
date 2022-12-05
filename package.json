@@ -1,0 +1,25 @@
+{
+  "name": "clicker_game_website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RolandsSapoznikovs/Clicker_Game_Website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RolandsSapoznikovs/Clicker_Game_Website/issues"
+  },
+  "homepage": "https://github.com/RolandsSapoznikovs/Clicker_Game_Website#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "mysql": "^2.18.1"
+  }
+}
