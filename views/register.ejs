@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FC - SIGN IN</title>
+  <link rel="stylesheet" href="/CSS/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/FCLOGO4.png" type="image/png">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="update.html">UPDATES</a></li>
+        <li><a href="index.html">ABOUT</a></li>
+        <li><a href="reviews.html">REVIEWS</a></li>
+      </ul>
+      <ul>
+        <li><a href="login.html">LOGIN</a></li>
+        <li><a href="register.html">SIGN IN</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="signin">
+    <div class="modwal">
+      <div class="loginbox">
+        <h2> SIGN UP </h2>
+        <form action="Connect.php" id="loginform" method="post">
+          <p id="mailid"> Email </p>
+          <div>
+            <input type="email" name="email" id="emailinp" required>
+          </div>
+          <p> Username </p>
+          <div>
+            <input type="username" name="userinp" id="usernameinp" required>
+          </div>
+          <p id="passwordid"> Password <span> <input type="checkbox" onclick=""> Show Password </span> </p>
+          <div>
+            <input type="parole" name="parolinp" id="paroleinp" required>
+          </div>
+          <div>
+            <button id="regbut"> SIGN UP </button>
+          </div>
+        </form>
+        <p id="ahaa"> Alredy have an account? <a href="login.html"> Login </a> </p>
+      </div>
+    </div>
+  </main>
+
+</html>
