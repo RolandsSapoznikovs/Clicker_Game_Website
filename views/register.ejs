@@ -15,13 +15,13 @@
   <header>
     <nav>
       <ul>
-        <li><a href="update.html">UPDATES</a></li>
-        <li><a href="index.html">ABOUT</a></li>
-        <li><a href="reviews.html">REVIEWS</a></li>
+        <li><a href="update">UPDATES</a></li>
+        <li><a href="index">ABOUT</a></li>
+        <li><a href="reviews">REVIEWS</a></li>
       </ul>
       <ul>
-        <li><a href="login.html">LOGIN</a></li>
-        <li><a href="register.html">SIGN IN</a></li>
+        <li><a href="login">LOGIN</a></li>
+        <li><a href="register">SIGN UP</a></li>
       </ul>
     </nav>
   </header>
@@ -29,26 +29,51 @@
     <div class="modwal">
       <div class="loginbox">
         <h2> SIGN UP </h2>
-        <form action="Connect.php" id="loginform" method="post">
-          <p id="mailid"> Email </p>
+        <form action="/register" method="POST" id="registerform">
+          
           <div>
-            <input type="email" name="email" id="emailinp" required>
-          </div>
-          <p> Username </p>
-          <div>
-            <input type="username" name="userinp" id="usernameinp" required>
-          </div>
-          <p id="passwordid"> Password <span> <input type="checkbox" onclick=""> Show Password </span> </p>
-          <div>
-            <input type="parole" name="parolinp" id="paroleinp" required>
+            <label for="regusernameinp"><p> Username </p></label>
+            <input type="text" name="regusernameinp" id="regusernameinp" required>
           </div>
           <div>
-            <button id="regbut"> SIGN UP </button>
+            <label for="regparoleinp"><p id="passwordid"> Password <span> <input type="checkbox" onclick=""> Show Password </span> </p></label>
+            <input type="password" name="regparoleinp" id="regparoleinp" required>
+          </div>
+          <div>
+            <label for="regemailinp"><p id="mailid"> Email </p></label>
+            <input type="email" name="regemailinp" id="regemailinp" required>
+          </div>
+          <div>
+            <input type="submit" id="regbut" value="SIGN UP"></button>
           </div>
         </form>
-        <p id="ahaa"> Alredy have an account? <a href="login.html"> Login </a> </p>
+        <p id="ahaa"> Already have an account? <a href="login.html"> Login </a> </p>
       </div>
     </div>
   </main>
+
+   <script>
+    const form = document.getElementById('registerform')
+    form.addEventListener('submit', registerUser)
+
+    async function registerUser(event) {
+      event.preventDefault()
+      const regusernameinp = document.getElementById('regusernameinp').value
+      const regparoleinp = document.getElementById('regparoleinp').value
+      const regemailinp = document.getElementById('regemailinp').value
+
+      const result = await fetch('/register', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          regusernameinp,
+          regparoleinp,
+          regemailinp
+        })
+      }).then((res) => res.json())
+    }
+    console.log(result)
+
+  </script>
 
 </html>
