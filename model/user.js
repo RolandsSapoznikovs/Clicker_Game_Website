@@ -3,9 +3,9 @@ const mongoose = require('mongoose')
 mongoose.connect("mongodb+srv://Rolands:Rolands@fruitclicker.9yqkrai.mongodb.net/?retryWrites=true&w=majority")
 
 var RegisterSchema = new mongoose.Schema({
-    Username: { type: String, required: true, unique: true},
-    Password: {type: String, required: true},
-    Email: {type: String, required: true},
+    regusernameinp: { type: String, required: true, unique: true},
+    regparoleinp: {type: String, required: true},
+    regemailinp: {type: String, required: true, unique: true},
 },
 {collection: 'users'}
 );

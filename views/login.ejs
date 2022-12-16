@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -29,24 +28,51 @@
     <div class="domwal">
       <div class="loginbox">
         <h2> LOGIN </h2>
-        <form action="" id="loginform">
-          <p> Username </p>
+        <form action="/login" id="loginform" method="post">
           <div>
-            <input type="text" name="userinp" id="usernameinp" required>
-          </div>
-          <p id="passwordid"> Password <span> <input type="checkbox" onclick=""> Show Password </span> </p>
-          <div>
-            <input type="password" name="parolinp" id="paroleinp" required>
+            <label for="regemailinp"><p id="mailid"> Email </p></label>
+            <input type="email" name="regemailinp" id="regemailinp" required>
           </div>
           <div>
-            <button id="logbut"> LOGIN </button>
+            <label for="regparoleinp"><p id="passwordid"> Password <span> <input type="checkbox" onclick=""> Show Password </span> </p></label>
+            <input type="password" name="regparoleinp" id="regparoleinp" required>
+          </div>
+          <div>
+            <input type="submit" id="regbut" value="LOGIN"></button>
           </div>
         </form>
-        <form action="register.html" id="signinform">
+        <form action="/register" id="signinform">
           <button id="regbutfa"> SIGN UP </button>
         </form>
       </div>
     </div>
   </main>
+
+  <script>
+    const form = document.getElementById('loginform')
+    form.addEventListener('submit', loginUser)
+
+    async function loginUser(event) {
+      event.preventDefault()
+      const regemailinp = document.getElementById('regemailinp').value
+      const regparoleinp = document.getElementById('regparoleinp').value
+      const result = await fetch('/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          regemailinp,
+          regparoleinp,
+        })
+      }).then((res) => res.json())
+      if(result.status === 'ok'){
+        console.log('Got the token', result.data)
+      alert('Success')
+    }else{
+      alert(result.error)
+    }
+    }
+
+
+  </script>
 
 </html>
