@@ -29,6 +29,13 @@
       <div class="loginbox">
         <h2> LOGIN </h2>
         <form action="/login" id="loginform" method="post">
+          <% if (registerResponse.status == "error") { %>
+            <div>
+                <div>
+                    <h4><%= registerResponse.error %></h4>
+                </div>
+            </div>
+        <% } %>
           <div>
             <label for="regemailinp"><p id="mailid"> Email </p></label>
             <input type="email" name="regemailinp" id="regemailinp" required>

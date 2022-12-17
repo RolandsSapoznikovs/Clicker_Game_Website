@@ -8,10 +8,14 @@ const req = require('express/lib/request');
 const User = require('./model/user')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const flash = require('connect-flash')
+const flash = require('connect-flash');
+const { clear, Console } = require('console');
 const JWT_SECRET = 'faiwniwuefnuiwauefn348th3458tyh8dh&#G$&@#^$G&bfuywbuf'
 
 mongoose.connect("mongodb+srv://Rolands:Rolands@fruitclicker.9yqkrai.mongodb.net/?retryWrites=true&w=majority")
+
+let registerResponse = {status: 'error', error: ''};
+let LoggedInUser = {UserName: '', Password: ''}
 
 
 app.set('views', path.join(__dirname, 'views'))
@@ -32,7 +36,7 @@ app.get('/index', function(req, res){
 })
 
 app.get('/login', function(req, res) {
-    res.render('login')
+    res.render('login', {registerResponse: registerResponse})
 });
 
 app.get('/register', function(req, res) {
@@ -48,34 +52,60 @@ app.get('/update', function(req, res) {
 });
 
 app.get('/LoggedIn', function(req, res) {
-    res.render('LoggedIn')
+    res.render('LoggedIn', {LoggedInUser: LoggedInUser})
 });
 
 app.get('/LoggedInReviews', function(req, res) {
-    res.render('LoggedInReviews')
+    res.render('LoggedInReviews', {LoggedInUser: LoggedInUser})
+});
+
+app.get('/LoggedInUpdate', function(req, res) {
+    res.render('LoggedInUpdate', {LoggedInUser: LoggedInUser})
 });
 
 app.post('/login', async (req, res) => {
-    const {regparoleinp, regemailinp} = req.body
+    const {regparoleinp, regemailinp, regusernameinp: regusernameinp} = req.body
 
     const user = await User.findOne({regemailinp}).lean()
 
     if(!user){
-        return res.json({status: 'error', error: 'Invalid Email or Password'})
+        //return res.json({status: 'error', error: 'Invalid Email or Password'})
+        registerResponse.status = "error";
+        registerResponse.error = "Invalid Email or Password";
     }
 
-    if(await bcrypt.compare(regparoleinp, user.regparoleinp)) {
+    else if(await bcrypt.compare(regparoleinp, user.regparoleinp)) {
 
-        const token = jwt.sign({ id: user._id, regemailinp: user.regemailinp},JWT_SECRET)
-        return res.json({status: 'ok', data: token}), res.send
+        //const token = jwt.sign({ id: user._id, regemailinp: user.regemailinp},JWT_SECRET)
+        User.find({regemailinp: user.regemailinp, regusernameinp: user.regusernameinp}, (error, data) => {
+            if(error){
+                console.log(error)
+            }else{
+                LoggedInUser.UserName = user.regusernameinp
+            }
+        })
+        registerResponse.status="success"
+        
         
     }
+    else{
+    registerResponse.status = "error";
+    registerResponse.error = "Invalid Email or Password";
+    }
 
-    res.json({status: 'error', error: 'Invalide Email or Password'})
+
+    if (registerResponse.status == "success") {
+        LoggedInUser.UserName = user.regusernameinp
+        res.redirect('/LoggedIn')
+    } else if (registerResponse.status == "error") {
+        res.redirect("/login")
+    } else {
+        console.log("Who this?")
+    }
 
 })
 
-let registerResponse = {status: '', error: ''};
+
 app.post('/register', async (req, res) =>{
 
      const {regusernameinp, regparoleinp: plainTextPassword, regemailinp} = req.body
@@ -104,6 +134,10 @@ app.post('/register', async (req, res) =>{
         registerResponse.error = "Password should be at least 6 characters long";
         // return res.json({status: 'error', error: 'Password should be at least 6 characters long'})
     }
+    
+    else{
+        registerResponse.status = "success"
+    }
 
 
     if(registerResponse.status !== "error"){
@@ -116,14 +150,18 @@ app.post('/register', async (req, res) =>{
                 regparoleinp,
                 regemailinp
             })
-            console.log('User Created: ', response);
+            console.log('User Created: ', response);           
             registerResponse.status = "success";
-        } catch (error) {
+            
+        } catch (error){
             console.log(error);
             if (JSON.stringify(error.code === 11000)) {
                 // return res.json({status: 'error', error: 'Username already in use'})
                 registerResponse.status = "error";
-                registerResponse.error = "Username already in use";
+                registerResponse.error = "Username already in use";        
+            }
+            else{
+                registerResponse.status = "success"
             }
         }
     }
