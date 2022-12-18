@@ -5,17 +5,17 @@ var path = require('path');
 var mongoose = require('mongoose');
 const { json } = require('body-parser');
 const req = require('express/lib/request');
-const User = require('./model/user')
+const {Register, Review} = require('./model/user')
+//const userReviews = require('./model/user')
 const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const flash = require('connect-flash');
-const { clear, Console } = require('console');
+const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'faiwniwuefnuiwauefn348th3458tyh8dh&#G$&@#^$G&bfuywbuf'
 
 mongoose.connect("mongodb+srv://Rolands:Rolands@fruitclicker.9yqkrai.mongodb.net/?retryWrites=true&w=majority")
 
 let registerResponse = {status: 'error', error: ''};
-let LoggedInUser = {UserName: '', Password: ''}
+let LoggedInUser = {UserName: ''}
+
 
 
 app.set('views', path.join(__dirname, 'views'))
@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
 
 app.use(express.urlencoded({ extended: false}))
+
 
 app.get('/', function(req, res) {
     res.render('index');
@@ -56,7 +57,11 @@ app.get('/LoggedIn', function(req, res) {
 });
 
 app.get('/LoggedInReviews', function(req, res) {
-    res.render('LoggedInReviews', {LoggedInUser: LoggedInUser})
+    Review.find({}, function(err, data){
+        if (err) throw err;
+        res.render('LoggedInReviews',{LoggedInUser: LoggedInUser, reviews: data});
+    })
+    
 });
 
 app.get('/LoggedInUpdate', function(req, res) {
@@ -66,7 +71,7 @@ app.get('/LoggedInUpdate', function(req, res) {
 app.post('/login', async (req, res) => {
     const {regparoleinp, regemailinp, regusernameinp: regusernameinp} = req.body
 
-    const user = await User.findOne({regemailinp}).lean()
+    const user = await Register.findOne({regemailinp}).lean()
 
     if(!user){
         //return res.json({status: 'error', error: 'Invalid Email or Password'})
@@ -77,7 +82,7 @@ app.post('/login', async (req, res) => {
     else if(await bcrypt.compare(regparoleinp, user.regparoleinp)) {
 
         //const token = jwt.sign({ id: user._id, regemailinp: user.regemailinp},JWT_SECRET)
-        User.find({regemailinp: user.regemailinp, regusernameinp: user.regusernameinp}, (error, data) => {
+        Register.find({regemailinp: user.regemailinp, regusernameinp: user.regusernameinp}, (error, data) => {
             if(error){
                 console.log(error)
             }else{
@@ -145,7 +150,7 @@ app.post('/register', async (req, res) =>{
 
     
         try {
-            const response = await User.create({
+            const response = await Register.create({
                 regusernameinp,
                 regparoleinp,
                 regemailinp
@@ -175,6 +180,25 @@ app.post('/register', async (req, res) =>{
     }
  
     
+})
+
+app.post('/LoggedInReviews', async (req, res) => {
+
+    const {reguserreview} = req.body
+
+    //const RegisteredUsers = await User.findOne({regusernameinp: LoggedInUser.UserName}).populate('Review')
+
+    try{
+        const ReviewResponse = await Review.create({
+            Username: LoggedInUser.UserName,
+            reguserreview
+        })
+        console.log(ReviewResponse)
+    }catch(error){
+        console.log(error)
+    }
+
+    res.redirect('/LoggedInReviews')
 })
 
 app.listen(3000, function(error) {
