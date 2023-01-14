@@ -45,7 +45,10 @@ app.get('/register', function(req, res) {
 });
 
 app.get('/reviews', function(req, res) {
-    res.render('reviews')
+    Review.find({}, function(err, data){
+        if (err) throw err;
+        res.render('reviews',{reviews: data});
+    })
 });
 
 app.get('/update', function(req, res) {
@@ -68,10 +71,18 @@ app.get('/LoggedInUpdate', function(req, res) {
     res.render('LoggedInUpdate', {LoggedInUser: LoggedInUser})
 });
 
+app.get('/Admin', function(req, res){
+    res.render('Admin')
+})
+
 app.post('/login', async (req, res) => {
     const {regparoleinp, regemailinp, regusernameinp: regusernameinp} = req.body
 
     const user = await Register.findOne({regemailinp}).lean()
+
+    if(user == 'Admin@admin'){
+        res.redirect('/Admin')
+    }
 
     if(!user){
         //return res.json({status: 'error', error: 'Invalid Email or Password'})

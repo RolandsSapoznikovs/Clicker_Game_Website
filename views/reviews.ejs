@@ -26,19 +26,21 @@
   </nav>
   </header>
   <main id="reviews">
-    <h2> LOGIN </h2>
+    <h2> Reviews </h2>
     <div class="waldom">
         <form action="" id="reviewform">
               <div> 
-                  <input type="review" name="reviewinp" id="reviewinput" required placeholder="Enter your review..."> <button id="sendbut"> SEND </button>
-              </div>
+                  <h1> Login to leave a review</h1>
               <ul>
+                <% for (var i=0; i < reviews.length; i++) { %>
                 <li>
                   <div class = "reviewp">
-                      <h3> Anonym#2395 </h3> <br>
-                      <p> i’ve first tried this game yesterday and i can’t stop playing! it’s so good... </p>
+                      <h3> <%= reviews[i].Username %> </h3> <br>
+                      <p> <%= reviews[i].reguserreview %>  </p>
                   </div>
                 </li>
+                <% } %> 
+              </ul>
            <!--  <div class = "reviewp">
                 <h3> Iluvfruits22 </h3> <br>
                 <p> I LOVE THIS GAME! its so relaxing and fun! best game i played in a while </p>
@@ -56,7 +58,6 @@
                 <h3> DanTheMan </h3> <br>
                 <p> Recently my friend recommended this game to me, at first I had low expectations but when I started playing it I realized how good it really is. Be sure to try. </p>
             </div> -->
-          </ul> 
         </form>
     </div>
   </main>

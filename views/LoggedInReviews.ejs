@@ -25,23 +25,23 @@
       </ul>
   </nav>
   </header>
-  <main id="reviews1">
+  <main id="reviews">
     <h2> Reviews </h2>
     <div class="waldom">
         <form action="/LoggedInReviews" id="reviewform" method="post"> 
           <div> 
-            <input type="review" name="reguserreview" id="reviewinput" required placeholder="Enter your review..."> <button id="sendbut" type="submit"> SEND </button>
+            <input type="review" name="reguserreview" id="reviewinput" autocomplete="off" required placeholder="Enter your review..."> <button id="sendbut" type="submit"> SEND </button>
         </div>
         <ul>
           <% for (var i=0; i < reviews.length; i++) { %>
           <li>
             <div class = "reviewp">
-                <h1> <%= reviews[i].Username %> </h1>
-                <h2> <%= reviews[i].reguserreview %>  </h2>
+                <h3> <%= reviews[i].Username %> </h3> <br>
+                <p> <%= reviews[i].reguserreview %>  </p>
             </div>
           </li>
-        </ul>
           <% } %> 
+        </ul>
            <!--  <div class = "reviewp">
                 <h3> Iluvfruits22 </h3> <br>
                 <p> I LOVE THIS GAME! its so relaxing and fun! best game i played in a while </p>
