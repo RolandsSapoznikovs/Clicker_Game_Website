@@ -9,7 +9,9 @@ const {Register, Review} = require('./model/user')
 //const userReviews = require('./model/user')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
+const { ObjectId } = require('mongodb');    
 const JWT_SECRET = 'faiwniwuefnuiwauefn348th3458tyh8dh&#G$&@#^$G&bfuywbuf'
+const MongoClient = require('mongodb').MongoClient;
 
 mongoose.connect("mongodb+srv://Rolands:Rolands@fruitclicker.9yqkrai.mongodb.net/?retryWrites=true&w=majority")
 
@@ -75,16 +77,35 @@ app.get('/Admin', function(req, res){
     res.render('Admin')
 })
 
+app.get('/AdminReview', function(req, res){
+    Review.find({}, function(err, data){
+        if (err) throw err;
+        res.render('AdminReview',{reviews: data});
+    })
+})
+
+app.get('/AdminUpdate', function(req, res){
+    res.render('AdminUpdate')
+})
+
+app.get('/AdminUsers', function(req, res){
+    Register.find({}, function(err, data){
+        if (err) throw err;
+        res.render('AdminUsers',{Users: data});
+    })
+})
+
 app.post('/login', async (req, res) => {
     const {regparoleinp, regemailinp, regusernameinp: regusernameinp} = req.body
 
     const user = await Register.findOne({regemailinp}).lean()
 
-    if(user == 'Admin@admin'){
-        res.redirect('/Admin')
+    if(regemailinp == 'Admin@admin'){
+        registerResponse.status = "admin";
     }
 
-    if(!user){
+
+    else if(!user){
         //return res.json({status: 'error', error: 'Invalid Email or Password'})
         registerResponse.status = "error";
         registerResponse.error = "Invalid Email or Password";
@@ -110,7 +131,10 @@ app.post('/login', async (req, res) => {
     }
 
 
-    if (registerResponse.status == "success") {
+    if(registerResponse.status == "admin"){
+        res.redirect('/Admin')
+    } 
+    else if (registerResponse.status == "success") {
         LoggedInUser.UserName = user.regusernameinp
         res.redirect('/LoggedIn')
     } else if (registerResponse.status == "error") {
@@ -211,6 +235,32 @@ app.post('/LoggedInReviews', async (req, res) => {
 
     res.redirect('/LoggedInReviews')
 })
+
+app.delete('/delete-data/:id',async (req, res) => {
+    const id = req.params.id
+
+    MongoClient.connect("mongodb+srv://Rolands:Rolands@fruitclicker.9yqkrai.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true}, (err, db) =>{
+        if (err) throw err;
+        const dbo = db.db("test");
+
+        if(!ObjectId.isValid(id)){
+            console.log(id)
+        }
+
+        dbo.collection("userReviews").deleteOne({ _id: ObjectId(id) }, (err, obj) => {
+        res.redirect('/AdminReview')
+        console.log(`Data with ID ${id} was deleted`);
+        console.log('Test2')
+        db.close();
+        });
+        console.log('Test')
+
+
+
+    });
+
+
+});
 
 app.listen(3000, function(error) {
     if(error) {

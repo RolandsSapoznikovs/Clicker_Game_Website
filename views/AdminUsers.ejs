@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FC - USERS</title>
+  <link rel="stylesheet" href="/CSS/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/FCLOGO4.png" type="image/png">
+</head>
+
+<body>
+  <header>
+    <nav>
+        <ul>
+            <li><a href="AdminUpdate">UPDATES</a></li>
+            <li><a href="Admin">ABOUT</a></li>
+            <li><a href="AdminReview">REVIEWS</a></li>
+            <li><a href="AdminUsers">USERS</a></li>
+          </ul>
+          <ul>
+            <li><a>Admin</a></li>
+            <li><a href="Index">LogOut</a></li>
+          </ul>
+  </nav>
+  </header>
+  <main id="Users">
+    <h2> USERS </h2>
+    <div class="waldom">
+        <form action="/LoggedInUsers" id="reviewform" method="post"> 
+        <ul>
+          <% for (var i=0; i < Users.length; i++) { %>
+          <li>
+            <div class = "reviewp">
+                <h3> <%= Users[i].regusernameinp%> </h3> <br>
+                <p> <%= Users[i].regemailinp %>  </p>
+            </div>
+          </li>
+          <% } %> 
+        </ul>
+    </form>
+</div>
+</main>
+</body>
+</html>
