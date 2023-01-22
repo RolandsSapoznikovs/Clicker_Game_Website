@@ -262,6 +262,32 @@ app.delete('/delete-data/:id',async (req, res) => {
 
 });
 
+app.delete('/delete-datas/:id',async (req, res) => {
+    const id = req.params.id
+
+    MongoClient.connect("mongodb+srv://Rolands:Rolands@fruitclicker.9yqkrai.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true}, (err, db) =>{
+        if (err) throw err;
+        const dbos = db.db("test");
+
+        if(!ObjectId.isValid(id)){
+            console.log(id)
+        }
+
+        dbos.collection("users").deleteOne({ _id: ObjectId(id) }, (err, obj) => {
+        res.redirect('/AdminReview')
+        console.log(`Data with ID ${id} was deleted`);
+        console.log('Test2')
+        db.close();
+        });
+        console.log('Test')
+
+
+
+    });
+
+
+});
+
 app.listen(3000, function(error) {
     if(error) {
         console.log('Something went wrong', error)
