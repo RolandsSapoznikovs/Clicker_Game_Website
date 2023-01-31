@@ -47,7 +47,7 @@
 <script>
     function deleteData(event, id) {
   event.preventDefault();
-  fetch(`/delete-data2/${id}`, {
+  fetch(`/delete-data/${id}`, {
     method: 'DELETE'
   })
   .then(data => {

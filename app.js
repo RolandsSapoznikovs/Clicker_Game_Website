@@ -18,7 +18,27 @@ mongoose.connect("mongodb+srv://Rolands:Rolands@fruitclicker.9yqkrai.mongodb.net
 let registerResponse = {status: 'error', error: ''};
 let LoggedInUser = {UserName: ''}
 
+app.use(express.static(__dirname + '/public'));
 
+//THREE
+app.use('/buildThree/', express.static(path.join(__dirname, 'node_modules/three/build')));
+app.use('/jsmThree/', express.static(path.join(__dirname, 'node_modules/three/examples/jsm')));
+
+//Dat.gui
+app.use('/buildDatGui/', express.static(path.join(__dirname, 'node_modules/dat.gui/build')));
+
+//Three.Interactive
+app.use('/threeInteractive/', express.static(path.join(__dirname, 'node_modules/three.interactive/build')));
+
+//Tween.js
+app.use('/tweenJsDist/', express.static(path.join(__dirname, 'node_modules/@tweenjs/tween.js/dist')));
+
+//GSAP animation library
+app.use('/gsapDirect/', express.static(path.join(__dirname, '/node_modules/gsap')));
+
+//Objects
+app.use('/resourcesObjects/', express.static(path.join(__dirname, 'resources/objects')));
+app.use('/resourcesImages/', express.static(path.join(__dirname, 'resources/images')));
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
@@ -32,6 +52,10 @@ app.use(express.urlencoded({ extended: false}))
 
 app.get('/', function(req, res) {
     res.render('index');
+});
+
+app.get('/Game.html', function(req, res) {
+    res.render('Game.html');
 });
 
 app.get('/index', function(req, res){
