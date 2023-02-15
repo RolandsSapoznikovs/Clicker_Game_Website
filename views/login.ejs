@@ -4,23 +4,27 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FC - LOGIN</title>
+  <title>FC - SIGN IN</title>
   <link rel="stylesheet" href="/CSS/style.css">
+  <link rel="stylesheet" href="/CSS/transition.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <link rel="icon" href="img/FCLOGO4.png" type="image/png">
+  <script src= "JS/showpassjs.js"> </script>
 </head>
 
 <body>
+
+  <div class = "transition transition-1 is-active"> </div>
   <header>
     <nav>
       <ul>
-        <li><a href="update">UPDATES</a></li>
-        <li><a href="index">ABOUT</a></li>
-        <li><a href="reviews">REVIEWS</a></li>
+        <li><a href="update" class = "headbutt">UPDATES</a></li>
+        <li><a href="index" class = "headbutt">ABOUT</a></li>
+        <li><a href="reviews" class = "headbutt">REVIEWS</a></li>
       </ul>
       <ul>
-        <li><a href="login">LOGIN</a></li>
-        <li><a href="register">SIGN UP</a></li>
+        <li><a href="login" class = "headbutt">LOGIN</a></li>
+        <li><a href="register" class = "headbutt">SIGN UP</a></li>
       </ul>
     </nav>
   </header>
@@ -41,7 +45,7 @@
             <input type="email" name="regemailinp" id="regemailinp" required>
           </div>
           <div>
-            <label for="regparoleinp"><p id="passwordid"> Password <span> <input type="checkbox" onclick="myFunction()"> Show Password </span> </p></label>
+            <label for="regparoleinp"><p id="passwordid"> Password <span> <input type="checkbox" onclick="spfunc()"> Show Password </span> </p></label>
             <input type="password" name="regparoleinp" id="regparoleinp" required>
           </div>
           <div>

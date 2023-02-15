@@ -285,7 +285,7 @@ footer a{
     margin: 0 auto;
     background-color: rgb(152,210,142);
 }
-.waldom form {
+.waldom form { background-color: rgb(152,210,142);
     display: block;
     text-align: center;
 }
@@ -303,19 +303,24 @@ footer a{
     margin: 3.91% 5% 0% 0%;
 }
 .reviewp {
-    float: left;
-    padding: 4% 0% 0% 7.5% ; /*top-right-bottom-left*/
+    display: block;
+    padding: 4% 7.5% 0% 7.5% ; /*top-right-bottom-left*/
     font-size: 30px;
 }
+
+.reviewpdiv{
+    background-color: rgb(152,210,142);
+    word-wrap: break-word;
+}
+
 .reviewp h3{
-    float: left;
     color:rgb(59, 94, 43);
     text-align: left;
 }
 .reviewp p{
-    float: left;
     color:rgb(72, 88, 65);
     text-align: left;
+    padding-bottom: 30px;
 }
 
 /* Update exclusive */
