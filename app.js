@@ -120,6 +120,10 @@ app.get('/AdminUsers', function(req, res){
     })
 })
 
+app.get('/ForgotPass.ejs', function(req, res){
+    res.render('ForgotPass.ejs')
+})
+
 app.post('/login', async (req, res) => {
     const {regparoleinp, regemailinp, regusernameinp: regusernameinp} = req.body
 
@@ -260,6 +264,28 @@ app.post('/LoggedInReviews', async (req, res) => {
 
     res.redirect('/LoggedInReviews')
 })
+
+app.post('/forgot-password', async (req, res) => {
+    const { regusernameinp, regparoleinp: plainTextPassword, regemailinp, newPassword: newplainTextPassword } = req.body;
+  
+    // Find the user in the database
+    const user = await Register.findOne({regemailinp}).lean()
+    const newPassword = await bcrypt.hash(newplainTextPassword, 10)
+
+    MongoClient.connect("mongodb+srv://Rolands:Rolands@fruitclicker.9yqkrai.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true}, (err, db) =>{
+        if (err) throw err;
+        const dbopass = db.db("test");
+        const collection = dbopass.collection("users")
+
+        collection.updateOne({ regemailinp: user.regemailinp}, {$set: {regparoleinp: newPassword}}, function(err, result) {
+            res.redirect('/login')
+            console.log(`${user.regemailinp} password was changed to ${newPassword}`);
+            console.log('Test2')
+            db.close();
+        })
+
+    });
+  });
 
 app.delete('/delete-data/:id',async (req, res) => {
     const id = req.params.id
