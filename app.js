@@ -112,6 +112,9 @@ app.get('/AdminReview', function(req, res){
 app.get('/AdminUpdate', function(req, res){
     res.render('AdminUpdate')
 })
+app.get('/instruct.ejs', function(req, res){
+    res.render('instruct')
+})
 
 app.get('/AdminUsers', function(req, res){
     Register.find({}, function(err, data){
